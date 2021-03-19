@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Coordinate {
+  latitude: Int!
+  longitude: Int!
+}
+
+type User {
+  firstName: String!
+  lastName: String
+  email: String!
+  coordinate: Coordinate!
+}
+
+type Query {
+  user(id: Int!): User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+}
+
+input CreateUserInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  coordinate: CoordinateDto!
+}
+
+input CoordinateDto {
+  latitude: Int!
+  longitude: Int!
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  email: String
+  coordinate: CoordinateDto
+  id: Int!
+}
