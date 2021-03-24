@@ -10,6 +10,9 @@ export class User {
   firstName: string;
 
   @Prop()
+  authToken: string;
+
+  @Prop()
   lastName?: string;
 
   @Prop()

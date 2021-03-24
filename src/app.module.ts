@@ -13,7 +13,7 @@ import { AuthModule } from './modules/auth/auth.module';
       autoSchemaFile: 'src/schema.gql',
     }),
     MongooseModule.forRoot(
-      `mongodb://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DBNAME}`
+      `mongodb://${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DBNAME}`,
     ),
     UserModule,
     AuthModule,

@@ -4,6 +4,12 @@ import { Coordinate } from './coordinate.entity';
 @ObjectType()
 export class User {
   @Field({ nullable: false })
+  _id: string;
+
+  @Field({ nullable: false })
+  authToken: string;
+
+  @Field({ nullable: false })
   firstName: string;
 
   @Field({ nullable: true })
