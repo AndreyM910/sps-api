@@ -1,9 +1,12 @@
-import { Prop } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
+@Schema({_id: false})
 export class Coordinate {
-  @Prop()
+  @Prop({ required: true })
   latitude: number;
 
-  @Prop()
+  @Prop({ required: true })
   longitude: number;
 }
+
+export const CoordinateSchema = SchemaFactory.createForClass(Coordinate);

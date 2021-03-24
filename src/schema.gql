@@ -22,6 +22,7 @@ type Query {
 
 type Mutation {
   signUp(signUpInput: SignUpInput!): User!
+  signIn(signInInput: SignInInput!): User!
 }
 
 input SignUpInput {
@@ -35,4 +36,9 @@ input SignUpInput {
 input CoordinateDto {
   latitude: Int!
   longitude: Int!
+}
+
+input SignInInput {
+  password: String!
+  email: String!
 }
