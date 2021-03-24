@@ -19,21 +19,9 @@ type Query {
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
-}
-
-input CreateUserInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  coordinate: CoordinateDto!
-}
-
-input CoordinateDto {
-  latitude: Int!
-  longitude: Int!
+  signUp(signUpInput: SignUpInput!): User!
 }
 
 input UpdateUserInput {
@@ -42,4 +30,17 @@ input UpdateUserInput {
   email: String
   coordinate: CoordinateDto
   id: Int!
+}
+
+input CoordinateDto {
+  latitude: Int!
+  longitude: Int!
+}
+
+input SignUpInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  coordinate: CoordinateDto!
+  password: String!
 }

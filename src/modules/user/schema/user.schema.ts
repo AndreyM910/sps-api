@@ -16,6 +16,9 @@ export class User {
   email: string;
 
   @Prop()
+  password: string;
+
+  @Prop()
   coordinate: Coordinate;
 }
 
