@@ -8,7 +8,7 @@ type Coordinate {
 }
 
 type User {
-  _id: String!
+  _id: ObjectId!
   authToken: String!
   firstName: String!
   lastName: String
@@ -16,13 +16,29 @@ type User {
   coordinate: Coordinate!
 }
 
+"""Mongoose object id scalar type"""
+scalar ObjectId
+
 type Query {
-  user(id: Int!): User!
+  me: User!
 }
 
 type Mutation {
+  updateUser(updateUserInput: UpdateUserInput!): User!
   signUp(signUpInput: SignUpInput!): User!
   signIn(signInInput: SignInInput!): User!
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  email: String
+  coordinate: CoordinateDto
+}
+
+input CoordinateDto {
+  latitude: Int!
+  longitude: Int!
 }
 
 input SignUpInput {
@@ -31,11 +47,6 @@ input SignUpInput {
   email: String!
   coordinate: CoordinateDto!
   password: String!
-}
-
-input CoordinateDto {
-  latitude: Int!
-  longitude: Int!
 }
 
 input SignInInput {

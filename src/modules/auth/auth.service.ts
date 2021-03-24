@@ -26,7 +26,7 @@ export class AuthService {
     const user = await this.userService.findOne({email});
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
-      return this.userService.updateById(user._id, {authToken: this.jwtService.sign({userId: user._id, email: user.email})});
+      return this.userService.updateById(user._id, {authToken: this.jwtService.sign({_id: user._id, email: user.email})});
     } else {
       throw new UnauthorizedException('Incorrect password');
     }

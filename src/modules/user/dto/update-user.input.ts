@@ -1,8 +1,19 @@
-import { CreateUserInput } from './create-user.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Int, Field } from '@nestjs/graphql';
+import { CoordinateDto } from './coordinate.dto';
+import { IsEmail } from 'class-validator';
 
 @InputType()
-export class UpdateUserInput extends PartialType(CreateUserInput) {
-  @Field(() => Int)
-  id: number;
+export class UpdateUserInput {
+  @Field({ nullable: true })
+  firstName?: string;
+
+  @Field({ nullable: true })
+  lastName?: string;
+
+  @Field({ nullable: true })
+  @IsEmail()
+  email?: string;
+
+  @Field(() => CoordinateDto, { nullable: true })
+  coordinate?: CoordinateDto;
 }

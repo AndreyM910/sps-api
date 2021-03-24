@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ObjectIdScalar } from './shared/scalar/object-id.scalar';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { AuthModule } from './modules/auth/auth.module';
     UserModule,
     AuthModule,
   ],
-  providers: [AppService],
+  providers: [AppService, ObjectIdScalar],
 })
 export class AppModule {}

@@ -1,10 +1,11 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Coordinate } from './coordinate.entity';
+import { Types } from 'mongoose';
 
 @ObjectType()
 export class User {
   @Field({ nullable: false })
-  _id: string;
+  _id: Types.ObjectId;
 
   @Field({ nullable: false })
   authToken: string;

@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { Coordinate, CoordinateSchema } from './coordinate';
 
 export type UserDocument = User & Document;
