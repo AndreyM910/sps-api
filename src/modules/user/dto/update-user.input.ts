@@ -1,5 +1,5 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
-import { CoordinateDto } from './coordinate.dto';
+import { CoordinatesDto } from './coordinates.dto';
 import { IsEmail } from 'class-validator';
 
 @InputType()
@@ -14,6 +14,9 @@ export class UpdateUserInput {
   @IsEmail()
   email?: string;
 
-  @Field(() => CoordinateDto, { nullable: true })
-  coordinate?: CoordinateDto;
+  @Field(() => CoordinatesDto, { nullable: true })
+  coordinates?: CoordinatesDto;
+
+  @Field({ nullable: true })
+  address?: string;
 }

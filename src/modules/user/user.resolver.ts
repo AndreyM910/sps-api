@@ -5,6 +5,7 @@ import { UpdateUserInput } from './dto/update-user.input';
 import { CurrentUser } from 'src/shared/decorators/current-user.decorator';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Types } from 'mongoose';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -12,16 +13,16 @@ export class UserResolver {
 
   @UseGuards(JwtAuthGuard)
   @Query(() => User)
-  me(@CurrentUser() currentUser: User) {
-    return this.userService.findById(currentUser._id);
+  me(@CurrentUser() currentUser: Types.ObjectId) {
+    return this.userService.findById(currentUser);
   }
 
   @UseGuards(JwtAuthGuard)
   @Mutation(() => User)
   async updateUser(
     @Args('updateUserInput') updateUserInput: UpdateUserInput,
-    @CurrentUser() currentUser: User,
+    @CurrentUser() currentUser: Types.ObjectId,
   ) {
-    return this.userService.updateById(currentUser._id, updateUserInput);
+    return this.userService.updateById(currentUser, updateUserInput);
   }
 }

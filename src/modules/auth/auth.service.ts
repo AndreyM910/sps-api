@@ -18,7 +18,7 @@ export class AuthService {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(password, salt);
     const currentUser = await this.userService.create({...user, password: hash});
-    return this.userService.updateById(currentUser._id, {authToken: this.jwtService.sign({userId: currentUser._id, email: currentUser.email})});
+    return this.userService.updateById(currentUser._id, {authToken: this.jwtService.sign({_id: currentUser._id, email: currentUser.email})});
   }
 
   async signIn(input: SignInInput) {

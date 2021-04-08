@@ -2,9 +2,9 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Coordinate {
-  latitude: Int!
-  longitude: Int!
+type Coordinates {
+  latitude: Float!
+  longitude: Float!
 }
 
 type User {
@@ -13,7 +13,8 @@ type User {
   firstName: String!
   lastName: String
   email: String!
-  coordinate: Coordinate!
+  coordinates: Coordinates
+  address: String
 }
 
 """Mongoose object id scalar type"""
@@ -33,19 +34,21 @@ input UpdateUserInput {
   firstName: String
   lastName: String
   email: String
-  coordinate: CoordinateDto
+  coordinates: CoordinatesDto
+  address: String
 }
 
-input CoordinateDto {
-  latitude: Int!
-  longitude: Int!
+input CoordinatesDto {
+  latitude: Float!
+  longitude: Float!
 }
 
 input SignUpInput {
   firstName: String!
   lastName: String
   email: String!
-  coordinate: CoordinateDto!
+  coordinate: CoordinatesDto
+  address: String
   password: String!
 }
 

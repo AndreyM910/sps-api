@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { Coordinate, CoordinateSchema } from './coordinate';
+import { Coordinates, CoordinatesSchema } from './coordinates';
 
 export type UserDocument = User & Document;
 
@@ -21,8 +21,12 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  @Prop({type: CoordinateSchema, required: true })
-  coordinate: Coordinate;
+  @Prop({type: CoordinatesSchema })
+  coordinates?: Coordinates;
+
+  @Prop()
+  address?: string;
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
