@@ -1,5 +1,4 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Coordinates } from './coordinates.entity';
+import { ObjectType, Field, Float } from '@nestjs/graphql';
 import { Types } from 'mongoose';
 
 @ObjectType()
@@ -19,9 +18,12 @@ export class User {
   @Field({ nullable: false })
   email: string;
 
-  @Field(() => Coordinates, { nullable: true })
-  coordinates?: Coordinates;
+  @Field(() => [Float], { nullable: true })
+  coordinates?: number[];
 
   @Field({ nullable: true })
   address?: string;
+
+  @Field({ nullable: false })
+  userFiltersId: Types.ObjectId;
 }

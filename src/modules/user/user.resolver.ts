@@ -16,6 +16,12 @@ export class UserResolver {
   me(@CurrentUser() currentUser: Types.ObjectId) {
     return this.userService.findById(currentUser);
   }
+  //
+  // @UseGuards(JwtAuthGuard)
+  // @Query(() => User)
+  // searchUsers(@CurrentUser() currentUser: Types.ObjectId) {
+  //   return this.userService.searchUsers();
+  // }
 
   @UseGuards(JwtAuthGuard)
   @Mutation(() => User)

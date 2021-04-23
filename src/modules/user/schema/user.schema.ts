@@ -21,12 +21,14 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  @Prop({type: CoordinatesSchema })
+  @Prop({ type: <GeoJSON type> , coordinates: <coordinates> })
   coordinates?: Coordinates;
 
   @Prop()
   address?: string;
 
+  @Prop({ required: true, ref: 'UserFilters' })
+  userFiltersId: Types.ObjectId;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
